@@ -183,15 +183,25 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AdicionaMensalidadeUsuarioController.cs" />
+    <Compile Include="Controllers\AdicionaUsuarioAcademiaController.cs" />
+    <Compile Include="Controllers\AlteraStatusMensalidadeController.cs" />
+    <Compile Include="Controllers\AlteraStatusPagamentoController.cs" />
+    <Compile Include="Controllers\AlteraUsuarioController.cs" />
     <Compile Include="Controllers\GC_AcademiaController.cs" />
     <Compile Include="Controllers\GC_MensalidadeController.cs" />
     <Compile Include="Controllers\GC_MensalidadeStatusController.cs" />
     <Compile Include="Controllers\GC_ModalidadeController.cs" />
+    <Compile Include="Controllers\GC_PagSeguroPagamentoController.cs" />
     <Compile Include="Controllers\GC_PerfilController.cs" />
     <Compile Include="Controllers\GC_UsuarioController.cs" />
+    <Compile Include="Controllers\GerarBoletosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ObtemAcademiaUsuarioController.cs" />
+    <Compile Include="Controllers\ObtemMensalidadeController.cs" />
+    <Compile Include="Controllers\ObtemPagseguroController.cs" />
+    <Compile Include="Controllers\ObtemPerfilController.cs" />
     <Compile Include="Controllers\ObtemUsuariosAcademiaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -216,14 +226,40 @@
     <Compile Include="Migrations\201803051127518_Key Fix.Designer.cs">
       <DependentUpon>201803051127518_Key Fix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803061045263_Remove chave desnecessaria.cs" />
+    <Compile Include="Migrations\201803061045263_Remove chave desnecessaria.Designer.cs">
+      <DependentUpon>201803061045263_Remove chave desnecessaria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803101701099_Pagseguro.cs" />
+    <Compile Include="Migrations\201803101701099_Pagseguro.Designer.cs">
+      <DependentUpon>201803101701099_Pagseguro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803101706431_Add table.cs" />
+    <Compile Include="Migrations\201803101706431_Add table.Designer.cs">
+      <DependentUpon>201803101706431_Add table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803102015435_Adiciona academia na mensalidade .cs" />
+    <Compile Include="Migrations\201803102015435_Adiciona academia na mensalidade .Designer.cs">
+      <DependentUpon>201803102015435_Adiciona academia na mensalidade .cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803110040501_Add usuario in mensalidade.cs" />
+    <Compile Include="Migrations\201803110040501_Add usuario in mensalidade.Designer.cs">
+      <DependentUpon>201803110040501_Add usuario in mensalidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803111038309_add due date.cs" />
+    <Compile Include="Migrations\201803111038309_add due date.Designer.cs">
+      <DependentUpon>201803111038309_add due date.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\GC_Academia.cs" />
     <Compile Include="Models\GC_Mensalidade.cs" />
     <Compile Include="Models\GC_MensalidadeStatus.cs" />
     <Compile Include="Models\GC_Modalidade.cs" />
+    <Compile Include="Models\GC_PagSeguroPagamento.cs" />
     <Compile Include="Models\GC_Perfil.cs" />
     <Compile Include="Models\GC_Usuario.cs" />
     <Compile Include="Models\GymControlContext.cs" />
+    <Compile Include="pagseguro\GeradorBoleto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -257,13 +293,16 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -309,6 +348,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803051127518_Key Fix.resx">
       <DependentUpon>201803051127518_Key Fix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803061045263_Remove chave desnecessaria.resx">
+      <DependentUpon>201803061045263_Remove chave desnecessaria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803101701099_Pagseguro.resx">
+      <DependentUpon>201803101701099_Pagseguro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803101706431_Add table.resx">
+      <DependentUpon>201803101706431_Add table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803102015435_Adiciona academia na mensalidade .resx">
+      <DependentUpon>201803102015435_Adiciona academia na mensalidade .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803110040501_Add usuario in mensalidade.resx">
+      <DependentUpon>201803110040501_Add usuario in mensalidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803111038309_add due date.resx">
+      <DependentUpon>201803111038309_add due date.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

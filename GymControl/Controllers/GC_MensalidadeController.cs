@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using GymControl.Models;
+using GymControl.pagseguro;
 
 namespace GymControl.Controllers
 {
@@ -20,7 +21,7 @@ namespace GymControl.Controllers
         // GET: api/GC_Mensalidade
         public IQueryable<GC_Mensalidade> GetGC_Mensalidade()
         {
-            return db.GC_Mensalidade;
+            return db.GC_Mensalidade.OrderBy(x => x.Vencimento);
         }
 
         // GET: api/GC_Mensalidade/5
@@ -75,15 +76,12 @@ namespace GymControl.Controllers
         [ResponseType(typeof(GC_Mensalidade))]
         public async Task<IHttpActionResult> PostGC_Mensalidade(GC_Mensalidade gC_Mensalidade)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             db.GC_Mensalidade.Add(gC_Mensalidade);
-            await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = gC_Mensalidade.Id }, gC_Mensalidade);
+            gC_Mensalidade.GC_MensalidadeStatusId = 1;
+            await db.SaveChangesAsync();
+            // new GeradorBoleto().GerarBoletos(gC_Mensalidade);
+            return Ok(gC_Mensalidade);
         }
 
         // DELETE: api/GC_Mensalidade/5

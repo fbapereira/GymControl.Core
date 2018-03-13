@@ -13,7 +13,5 @@ namespace GymControl.Models
         [Required]
         public String Nome { get; set; }
 
-        public int AcademiaId { get; set; }
-
     }
 }

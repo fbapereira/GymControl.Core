@@ -30,5 +30,7 @@ namespace GymControl.Models
         public System.Data.Entity.DbSet<GymControl.Models.GC_Perfil> GC_Perfil { get; set; }
 
         public System.Data.Entity.DbSet<GymControl.Models.GC_Usuario> GC_Usuario { get; set; }
+
+        public System.Data.Entity.DbSet<GymControl.Models.GC_PagSeguroPagamento> GC_PagSeguroPagamento { get; set; }
     }
 }

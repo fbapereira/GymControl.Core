@@ -17,6 +17,13 @@ namespace GymControl.Models
         public DateTime Vencimento { get; set; }
 
         [Required]
-        public GC_MensalidadeStatus GC_MensalidadeStatusId { get; set; }
+        public Int32 GC_MensalidadeStatusId { get; set; }
+
+        [Required]
+        public Int32 GC_AcademiaId { get; set; }
+
+        [Required]
+        public Int32 GC_UsuarioId { get; set; }
+                
     }
 }

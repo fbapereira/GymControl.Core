@@ -50,6 +50,17 @@ namespace GymControl.Controllers
                 return BadRequest();
             }
 
+            List<GC_Usuario> lst = (from item in db.GC_Usuario
+                                    where (item.CPF == gC_Usuario.CPF ||
+                                    item.Email == gC_Usuario.Email ||
+                                    item.Login == gC_Usuario.Login) && item.Id != id
+                                    select item).ToList();
+
+            if (lst.Count > 0)
+            {
+                return BadRequest("Dados Duplicados");
+            }
+
             db.Entry(gC_Usuario).State = EntityState.Modified;
 
             try
@@ -78,6 +89,17 @@ namespace GymControl.Controllers
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
+            }
+
+            List<GC_Usuario> lst = (from item in db.GC_Usuario
+                                    where item.CPF == gC_Usuario.CPF ||
+                                    item.Email == gC_Usuario.Email ||
+                                    item.Login == gC_Usuario.Login
+                                    select item).ToList();
+
+            if (lst.Count > 0)
+            {
+                return BadRequest("Dados Duplicados");
             }
 
             db.GC_Usuario.Add(gC_Usuario);
