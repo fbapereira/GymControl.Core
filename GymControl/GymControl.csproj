@@ -188,10 +188,14 @@
     <Compile Include="Controllers\AlteraStatusMensalidadeController.cs" />
     <Compile Include="Controllers\AlteraStatusPagamentoController.cs" />
     <Compile Include="Controllers\AlteraUsuarioController.cs" />
+    <Compile Include="Controllers\CheckoutController.cs" />
+    <Compile Include="Controllers\DeletaMensalidadeController.cs" />
+    <Compile Include="Controllers\DeletaUsuarioController.cs" />
     <Compile Include="Controllers\GC_AcademiaController.cs" />
     <Compile Include="Controllers\GC_MensalidadeController.cs" />
     <Compile Include="Controllers\GC_MensalidadeStatusController.cs" />
     <Compile Include="Controllers\GC_ModalidadeController.cs" />
+    <Compile Include="Controllers\GC_PagSeguroNotificationController.cs" />
     <Compile Include="Controllers\GC_PagSeguroPagamentoController.cs" />
     <Compile Include="Controllers\GC_PerfilController.cs" />
     <Compile Include="Controllers\GC_UsuarioController.cs" />
@@ -202,7 +206,9 @@
     <Compile Include="Controllers\ObtemMensalidadeController.cs" />
     <Compile Include="Controllers\ObtemPagseguroController.cs" />
     <Compile Include="Controllers\ObtemPerfilController.cs" />
+    <Compile Include="Controllers\ObtemSessaoController.cs" />
     <Compile Include="Controllers\ObtemUsuariosAcademiaController.cs" />
+    <Compile Include="Controllers\pagseguro_port1Controller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -250,16 +256,26 @@
     <Compile Include="Migrations\201803111038309_add due date.Designer.cs">
       <DependentUpon>201803111038309_add due date.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803131838363_Add delete function.cs" />
+    <Compile Include="Migrations\201803131838363_Add delete function.Designer.cs">
+      <DependentUpon>201803131838363_Add delete function.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803181024161_pag seguro notification.cs" />
+    <Compile Include="Migrations\201803181024161_pag seguro notification.Designer.cs">
+      <DependentUpon>201803181024161_pag seguro notification.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\GC_Academia.cs" />
     <Compile Include="Models\GC_Mensalidade.cs" />
     <Compile Include="Models\GC_MensalidadeStatus.cs" />
     <Compile Include="Models\GC_Modalidade.cs" />
+    <Compile Include="Models\GC_PagSeguroNotification.cs" />
     <Compile Include="Models\GC_PagSeguroPagamento.cs" />
     <Compile Include="Models\GC_Perfil.cs" />
     <Compile Include="Models\GC_Usuario.cs" />
     <Compile Include="Models\GymControlContext.cs" />
     <Compile Include="pagseguro\GeradorBoleto.cs" />
+    <Compile Include="pagseguro\Pagseguro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -366,6 +382,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803111038309_add due date.resx">
       <DependentUpon>201803111038309_add due date.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803131838363_Add delete function.resx">
+      <DependentUpon>201803131838363_Add delete function.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803181024161_pag seguro notification.resx">
+      <DependentUpon>201803181024161_pag seguro notification.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

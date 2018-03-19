@@ -48,7 +48,7 @@ namespace GymControl.pagseguro
 
         public List<GC_PagSeguroPagamento> GerarBoletos(List<GC_Mensalidade> oGC_Mensalidade)
         {
-
+            String url = System.Configuration.ConfigurationManager.AppSettings["pagSeguro_Boleto"];
             Int32 idMensalidade = oGC_Mensalidade[0].Id;
 
             GC_Mensalidade targetGC_Mensalidade = (from item in db.GC_Mensalidade
@@ -77,12 +77,14 @@ namespace GymControl.pagseguro
 
             oBody = oBody.Split('\'').Aggregate((current, next) => current + "\"" + next);
 
+            url = url.Replace("#token#", oGC_Academia.Token);
+            url = url.Replace("#email#", oGC_Academia.Email);
 
             using (var client = new HttpClient())
             {
 
                 var httpContent = new StringContent(oBody, Encoding.UTF8, "application/json");
-                var response = client.PostAsync("https://ws.pagseguro.uol.com.br/recurring-payment/boletos?email=fba_pereira@hotmail.com&token=32728DC4EF0A4615BD716904E82DA4AE", httpContent).Result;
+                var response = client.PostAsync(url, httpContent).Result;
 
 
                 if (response.IsSuccessStatusCode)

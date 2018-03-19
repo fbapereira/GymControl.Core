@@ -21,7 +21,9 @@ namespace GymControl.Controllers
         // GET: api/GC_Mensalidade
         public IQueryable<GC_Mensalidade> GetGC_Mensalidade()
         {
-            return db.GC_Mensalidade.OrderBy(x => x.Vencimento);
+            return (from item in db.GC_Mensalidade
+                    where item.IsActive
+                    select item).OrderBy(x => x.Vencimento);
         }
 
         // GET: api/GC_Mensalidade/5
@@ -79,6 +81,7 @@ namespace GymControl.Controllers
             db.GC_Mensalidade.Add(gC_Mensalidade);
 
             gC_Mensalidade.GC_MensalidadeStatusId = 1;
+            gC_Mensalidade.IsActive = true;
             await db.SaveChangesAsync();
             // new GeradorBoleto().GerarBoletos(gC_Mensalidade);
             return Ok(gC_Mensalidade);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
@@ -24,6 +25,10 @@ namespace GymControl.Models
 
         [Required]
         public String CPF { get; set; }
+
+        [DefaultValue(true)]
+        public Boolean IsActive { get; set; }
+
 
         // Foreign Key
         public ICollection<GC_Academia> Academias { get; set; }

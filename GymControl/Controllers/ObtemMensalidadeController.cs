@@ -16,11 +16,13 @@ namespace GymControl.Controllers
         public List<GC_Mensalidade> Post([FromBody]GC_Usuario value)
         {
             GC_Usuario oGC_Usuario = (from item in this.db.GC_Usuario
-                                      where item.Id == value.Id
+                                      where item.Id == value.Id && item.IsActive
                                       select item).FirstOrDefault();
 
             this.db.Entry(oGC_Usuario).Collection(b => b.Mensalidades).Load();
-            return oGC_Usuario.Mensalidades.OrderBy(x => x.Vencimento).ToList<GC_Mensalidade>();
+            return (from item in oGC_Usuario.Mensalidades
+                    where item.IsActive
+                    select item).OrderBy(x => x.Vencimento).ToList<GC_Mensalidade>();
         }
     }
 }

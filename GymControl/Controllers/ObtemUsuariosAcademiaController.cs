@@ -16,7 +16,7 @@ namespace GymControl.Controllers
         public List<GC_Usuario> Post([FromBody]GC_Academia value)
         {
             return (from item in this.db.GC_Usuario
-                    where item.Academias.FirstOrDefault((x) => x.Id == value.Id) != null
+                    where item.Academias.FirstOrDefault((x) => x.Id == value.Id) != null && item.IsActive
                     select item).ToList();
 
         }

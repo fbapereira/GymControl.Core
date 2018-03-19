@@ -110,3 +110,5 @@ C:\Projetos\Personal\GymControl\GymControl.Core\GymControl\obj\Release\GymContro
 C:\Projetos\Personal\GymControl\GymControl.Core\GymControl\obj\Release\GymControl.dll
 C:\Projetos\Personal\GymControl\GymControl.Core\GymControl\obj\Release\GymControl.pdb
 C:\Projetos\Personal\GymControl\GymControl.Core\GymControl\obj\Release\GymControl.csprojResolveAssemblyReference.cache
+C:\Projetos\Personal\GymControl\GymControl.Core\GymControl\obj\Release\GymControl.Migrations.Adddeletefunction.resources
+C:\Projetos\Personal\GymControl\GymControl.Core\GymControl\obj\Release\GymControl.Migrations.pagseguronotification.resources

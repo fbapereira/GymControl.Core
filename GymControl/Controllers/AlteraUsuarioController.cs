@@ -21,7 +21,7 @@ namespace GymControl.Controllers
             List<GC_Usuario> lst = (from item in db.GC_Usuario
                                     where (item.CPF == gC_Usuario.CPF ||
                                     item.Email == gC_Usuario.Email ||
-                                    item.Login == gC_Usuario.Login) && item.Id != gC_Usuario.Id
+                                    item.Login == gC_Usuario.Login) && item.IsActive && item.Id != gC_Usuario.Id
                                     select item).ToList();
 
             if (lst.Count > 0)

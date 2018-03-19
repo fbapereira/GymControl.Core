@@ -20,7 +20,9 @@ namespace GymControl.Controllers
         // GET: api/GC_Usuario
         public IQueryable<GC_Usuario> GetGC_Usuario()
         {
-            return db.GC_Usuario;
+            return from item in db.GC_Usuario
+                   where item.IsActive
+                   select item;
         }
 
         // GET: api/GC_Usuario/5
@@ -101,7 +103,7 @@ namespace GymControl.Controllers
             {
                 return BadRequest("Dados Duplicados");
             }
-
+            gC_Usuario.IsActive = true;
             db.GC_Usuario.Add(gC_Usuario);
             await db.SaveChangesAsync();
 

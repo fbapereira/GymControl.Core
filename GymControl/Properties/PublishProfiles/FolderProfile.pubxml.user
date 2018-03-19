@@ -6,7 +6,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>C:\Projetos\Personal\GymControl\Publicacoes\Gym.Core\20180313</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\Projetos\Personal\GymControl\Publicacoes\Gym.Core\20180318</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="ApplicationInsights.config">
@@ -91,10 +91,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/02/2015 09:32:26</publishTime>
     </File>
     <File Include="bin/GymControl.dll">
-      <publishTime>03/13/2018 08:36:28</publishTime>
+      <publishTime>03/18/2018 15:28:42</publishTime>
     </File>
     <File Include="bin/GymControl.pdb">
-      <publishTime>03/13/2018 08:36:28</publishTime>
+      <publishTime>03/18/2018 15:28:42</publishTime>
     </File>
     <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
       <publishTime>11/30/2016 17:07:42</publishTime>
@@ -370,7 +370,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>03/04/2018 09:51:13</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>03/13/2018 08:36:29</publishTime>
+      <publishTime>03/18/2018 15:28:43</publishTime>
     </File>
   </ItemGroup>
 </Project>
