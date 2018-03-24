@@ -9,7 +9,7 @@ namespace GymControl.Models
     {
         public int Id { get; set; }
         public string Code { get; set; }
-        public Nullable<bool> IsProcessed { get; set; }
+        public bool IsProcessed { get; set; }
         public string Address { get; set; }
     }
 }

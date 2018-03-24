@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GymControl.Migrations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,6 +19,8 @@ namespace GymControl
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            new GymControl.pagseguro.Pagseguro().Proccess();
+
         }
 
         protected void Application_BeginRequest()

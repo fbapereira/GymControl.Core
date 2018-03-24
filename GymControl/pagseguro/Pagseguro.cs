@@ -187,6 +187,14 @@ namespace GymControl.pagseguro
             return null;
         }
 
+        public Boolean Proccess()
+        {
+            List<GC_PagSeguroNotification> lstNotifications = (from item in db.GC_PagSeguroNotification
+                                                               where !item.IsProcessed
+                                                               select item).ToList();
+            lstNotifications.ForEach((x) => { this.ProcessNotification(x.Code, x.Address); });
+            return true;
+        }
 
         public Boolean ProcessNotification(String code, String port)
         {

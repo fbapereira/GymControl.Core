@@ -28,8 +28,8 @@ namespace GymControl.Controllers
                 oGC_PagSeguroNotification.Code = code;
                 oGC_PagSeguroNotification.IsProcessed = false;
                 db.GC_PagSeguroNotification.Add(oGC_PagSeguroNotification);
-                oGC_PagSeguroNotification.Id = db.SaveChanges();
-
+                Int32 id = db.SaveChanges();
+                //oGC_PagSeguroNotification.Id =
                 new Pagseguro().ProcessNotification(code, "PORT_1");
 
                 oGC_PagSeguroNotification.IsProcessed = true;

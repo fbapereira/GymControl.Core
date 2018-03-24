@@ -200,7 +200,6 @@ C:\Projetos\Personal\GymControl\GymControl.Core\GymControl\bin\Microsoft.AI.Depe
 C:\Projetos\Personal\GymControl\GymControl.Core\GymControl\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Projetos\Personal\GymControl\GymControl.Core\GymControl\bin\Microsoft.AI.WindowsServer.xml
 C:\Projetos\Personal\GymControl\GymControl.Core\GymControl\bin\Microsoft.AI.Web.xml
-C:\Projetos\Personal\GymControl\GymControl.Core\GymControl\obj\Debug\GymControl.csprojResolveAssemblyReference.cache
 C:\Projetos\Personal\GymControl\GymControl.Core\GymControl\obj\Debug\GymControl.Migrations.Initial.resources
 C:\Projetos\Personal\GymControl\GymControl.Core\GymControl\obj\Debug\GymControl.Migrations.Initial1.resources
 C:\Projetos\Personal\GymControl\GymControl.Core\GymControl\obj\Debug\GymControl.Migrations.GC_Perfil.resources
@@ -218,3 +217,5 @@ C:\Projetos\Personal\GymControl\GymControl.Core\GymControl\obj\Debug\GymControl.
 C:\Projetos\Personal\GymControl\GymControl.Core\GymControl\obj\Debug\GymControl.Migrations.addduedate.resources
 C:\Projetos\Personal\GymControl\GymControl.Core\GymControl\obj\Debug\GymControl.Migrations.Adddeletefunction.resources
 C:\Projetos\Personal\GymControl\GymControl.Core\GymControl\obj\Debug\GymControl.Migrations.pagseguronotification.resources
+C:\Projetos\Personal\GymControl\GymControl.Core\GymControl\obj\Debug\GymControl.Migrations.Notnull.resources
+C:\Projetos\Personal\GymControl\GymControl.Core\GymControl\obj\Debug\GymControl.csprojResolveAssemblyReference.cache

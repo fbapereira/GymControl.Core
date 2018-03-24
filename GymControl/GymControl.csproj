@@ -209,6 +209,8 @@
     <Compile Include="Controllers\ObtemSessaoController.cs" />
     <Compile Include="Controllers\ObtemUsuariosAcademiaController.cs" />
     <Compile Include="Controllers\pagseguro_port1Controller.cs" />
+    <Compile Include="Controllers\ResetarSenhaController.cs" />
+    <Compile Include="core\Mailer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -263,6 +265,10 @@
     <Compile Include="Migrations\201803181024161_pag seguro notification.cs" />
     <Compile Include="Migrations\201803181024161_pag seguro notification.Designer.cs">
       <DependentUpon>201803181024161_pag seguro notification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803231853208_Not null .cs" />
+    <Compile Include="Migrations\201803231853208_Not null .Designer.cs">
+      <DependentUpon>201803231853208_Not null .cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\GC_Academia.cs" />
@@ -388,6 +394,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803181024161_pag seguro notification.resx">
       <DependentUpon>201803181024161_pag seguro notification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803231853208_Not null .resx">
+      <DependentUpon>201803231853208_Not null .cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
