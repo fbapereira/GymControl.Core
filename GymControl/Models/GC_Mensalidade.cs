@@ -30,5 +30,15 @@ namespace GymControl.Models
         public Boolean IsActive { get; set; }
 
 
+        [DefaultValue(false)]
+        public Boolean IsAvisoCinco { get; set; }
+
+        [DefaultValue(false)]
+        public Boolean IsAvisoTres { get; set; }
+
+        [DefaultValue(false)]
+        public Boolean IsAvisoUm { get; set; }
+
+
     }
 }

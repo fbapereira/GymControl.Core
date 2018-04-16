@@ -72,7 +72,7 @@ namespace GymControl.pagseguro
             oBody = oBody.Replace("#numberOfPayments#", oGC_Mensalidade.Count.ToString());
             oBody = oBody.Replace("#CPF#", cpf);
             oBody = oBody.Replace("#Name#", oGC_Usuario.Nome);
-            oBody = oBody.Replace("#Email#", oGC_Usuario.Email);
+            oBody = oBody.Replace("#Email#", "fake_" + oGC_Usuario.Email);
             oBody = oBody.Replace("#AcademiaNome#", oGC_Academia.Nome);
 
             oBody = oBody.Split('\'').Aggregate((current, next) => current + "\"" + next);

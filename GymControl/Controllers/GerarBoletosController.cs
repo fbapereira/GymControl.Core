@@ -26,6 +26,11 @@ namespace GymControl.Controllers
                                       select item).FirstOrDefault();
 
 
+            if (lstGC_PagSeguroPagamento == null || lstGC_PagSeguroPagamento.Count == 0)
+            {
+                return false;
+            }
+
             for (int i = 0; i < value.Count; i++)
             {
                 lstGC_PagSeguroPagamento[i].GC_MensalidadeId = value[i].Id;

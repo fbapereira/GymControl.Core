@@ -34,5 +34,7 @@ namespace GymControl.Models
         public System.Data.Entity.DbSet<GymControl.Models.GC_PagSeguroPagamento> GC_PagSeguroPagamento { get; set; }
 
         public System.Data.Entity.DbSet<GymControl.Models.GC_PagSeguroNotification> GC_PagSeguroNotification { get; set; }
+
+        public System.Data.Entity.DbSet<GymControl.Models.GC_Email> GC_Email { get; set; }
     }
 }
