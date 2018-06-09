@@ -24,6 +24,7 @@ namespace GymControl
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+            new Task(() => { new Notification().SendBoletoXDias(20); }).Start();
             new Task(() => { new Notification().SendBoletoXDias(5); }).Start();
             new Task(() => { new Notification().SendBoletoXDias(3); }).Start();
             new Task(() => { new Notification().SendBoletoXDias(1); }).Start();
@@ -43,7 +44,7 @@ namespace GymControl
             if (HttpContext.Current.Request.HttpMethod == "OPTIONS")
             {
                 HttpContext.Current.Response.AddHeader("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE, OPTIONS");
-                HttpContext.Current.Response.AddHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+                HttpContext.Current.Response.AddHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Authorization, Content-Type, Accept");
                 HttpContext.Current.Response.AddHeader("Access-Control-Max-Age", "1728000");
                 HttpContext.Current.Response.End();
             }

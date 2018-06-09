@@ -22,5 +22,9 @@ namespace GymControl.Models
 
         [Required]
         public String Email { get; set; }
+
+        [Required]
+        public GC_Academia GC_AcademiaId { get; set; }
+
     }
 }

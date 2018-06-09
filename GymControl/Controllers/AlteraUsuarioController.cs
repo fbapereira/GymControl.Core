@@ -39,6 +39,7 @@ namespace GymControl.Controllers
             oGC_Usuario.Nome = gC_Usuario.Nome;
             oGC_Usuario.Email = gC_Usuario.Email;
             oGC_Usuario.Senha = gC_Usuario.Senha;
+            oGC_Usuario.Telefone = gC_Usuario.Telefone;
 
             db.SaveChangesAsync();
 

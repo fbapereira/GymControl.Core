@@ -191,8 +191,15 @@ namespace GymControl.pagseguro
         {
             List<GC_PagSeguroNotification> lstNotifications = (from item in db.GC_PagSeguroNotification
                                                                where !item.IsProcessed
-                                                               select item).ToList();
-            lstNotifications.ForEach((x) => { this.ProcessNotification(x.Code, x.Address); });
+                                                               select item)
+                                                               .OrderBy(x => x.Id).ToList();
+            lstNotifications.ForEach((x) =>
+            {
+                x.IsProcessed = this.ProcessNotification(x.Code, x.Address);
+
+            });
+
+            db.SaveChanges();
             return true;
         }
 
@@ -219,34 +226,42 @@ namespace GymControl.pagseguro
 
                 if (response.IsSuccessStatusCode)
                 {
-                    var responseContent = response.Content;
+                    try
+                    {
 
-                    // by calling .Result you are synchronously reading the result
-                    string responseString = responseContent.ReadAsStringAsync().Result;
-                    XmlDocument xml = new XmlDocument();
-                    xml.LoadXml(responseString);
+                        var responseContent = response.Content;
 
-                    XmlNodeList nodeList = xml.GetElementsByTagName("status");
-                    String status = nodeList[0].InnerText;
+                        // by calling .Result you are synchronously reading the result
+                        string responseString = responseContent.ReadAsStringAsync().Result;
+                        XmlDocument xml = new XmlDocument();
+                        xml.LoadXml(responseString);
 
-                    nodeList = xml.GetElementsByTagName("code");
-                    String pagseguroCode = nodeList[0].InnerText;
+                        XmlNodeList nodeList = xml.GetElementsByTagName("status");
+                        String status = nodeList[0].InnerText;
 
-                    GC_PagSeguroPagamento oGC_PagSeguroPagamento = (from item in db.GC_PagSeguroPagamento
-                                                                    where item.Code == pagseguroCode
-                                                                    select item).FirstOrDefault();
+                        nodeList = xml.GetElementsByTagName("code");
+                        String pagseguroCode = nodeList[0].InnerText;
 
-                    GC_Mensalidade oGC_Mensalidade = (from item in db.GC_Mensalidade
-                                                      where item.Id == oGC_PagSeguroPagamento.GC_MensalidadeId
-                                                      select item).FirstOrDefault();
+                        GC_PagSeguroPagamento oGC_PagSeguroPagamento = (from item in db.GC_PagSeguroPagamento
+                                                                        where item.Code == pagseguroCode
+                                                                        select item).FirstOrDefault();
 
-                    oGC_Mensalidade.GC_MensalidadeStatusId = Convert.ToInt32(status);
+                        GC_Mensalidade oGC_Mensalidade = (from item in db.GC_Mensalidade
+                                                          where item.Id == oGC_PagSeguroPagamento.GC_MensalidadeId
+                                                          select item).FirstOrDefault();
 
-                    db.SaveChanges();
-                    return true;
+                        oGC_Mensalidade.GC_MensalidadeStatusId = Convert.ToInt32(status);
+
+                        db.SaveChanges();
+                        return true;
+                    }
+                    catch (Exception)
+                    {
+                        return false;
+                    }
                 }
             }
-            return true;
+            return false;
         }
 
     }

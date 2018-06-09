@@ -1,4 +1,6 @@
 ﻿
+using GymControl.Models;
+using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using System;
 using System.Collections.Generic;
@@ -12,31 +14,43 @@ namespace GymControl
 {
     public class SimpleAuthorizationServerProvider : OAuthAuthorizationServerProvider
     {
-        public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
+        private GymControlContext db;
+
+        public SimpleAuthorizationServerProvider()
         {
-            context.Validated();
+            db = new GymControlContext();
         }
 
-        public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
+        public override Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
+        {
+            string clientId;
+            string clientSecret;
+            context.TryGetFormCredentials(out clientId, out clientSecret);
+
+
+
+            GC_Usuario oGC_Usuario = (from item in this.db.GC_Usuario
+                                      where item.Senha == clientSecret && (item.Email == clientId || item.Login == clientId) && item.IsActive
+                                      select item).FirstOrDefault();
+            if (oGC_Usuario != null)
+            {
+                context.Validated(clientId);
+            }
+
+            return base.ValidateClientAuthentication(context);
+        }
+
+        public override Task GrantClientCredentials(OAuthGrantClientCredentialsContext context)
         {
 
-            context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
-            //using (IUserRepository _repository = new UserRepository(new Data.DataContexts.OAuthServerDataContext()))
-            //{
-            //    var user = _repository.Authenticate(context.UserName, context.Password);
-
-            //    if (user == null)
-            //    {
-            //        context.SetError("invalid_grant", "The user name or password is incorrect.");
-            //        return;
-            //    }
-            //}
-
-            var identity = new ClaimsIdentity(context.Options.AuthenticationType);
-            identity.AddClaim(new Claim("sub", context.UserName));
-            identity.AddClaim(new Claim("role", "user"));
-
-            context.Validated(identity);
+            GC_Usuario oGC_Usuario = (from item in this.db.GC_Usuario
+                                      where (item.Email == context.ClientId || item.Login == context.ClientId) && item.IsActive
+                                      select item).FirstOrDefault();
+            var oAuthIdentity = new ClaimsIdentity(context.Options.AuthenticationType);
+            oAuthIdentity.AddClaim(new Claim(ClaimTypes.Name, oGC_Usuario.Nome));
+            var ticket = new AuthenticationTicket(oAuthIdentity, new AuthenticationProperties());
+            context.Validated(ticket);
+            return base.GrantClientCredentials(context);
         }
     }
 }

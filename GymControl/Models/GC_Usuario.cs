@@ -14,6 +14,8 @@ namespace GymControl.Models
         [Required]
         public String Nome { get; set; }
 
+        public String Telefone { get; set; }
+
         [Required]
         public String Login { get; set; }
 
@@ -33,7 +35,6 @@ namespace GymControl.Models
         // Foreign Key
         public ICollection<GC_Academia> Academias { get; set; }
 
-        public ICollection<GC_Modalidade> Modalidades { get; set; }
 
         public ICollection<GC_Mensalidade> Mensalidades { get; set; }
 

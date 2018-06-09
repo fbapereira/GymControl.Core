@@ -25,11 +25,16 @@ namespace GymControl.Controllers
                                       where item.Id == value.GC_UsuarioId
                                       select item).FirstOrDefault();
 
+            GC_Academia OGC_Academia = (from item in db.GC_Academia
+                                        where item.Id == value.GC_AcademiaId
+                                        select item).FirstOrDefault();
+
+
             GC_PagSeguroPagamento oGC_PagSeguroPagamento = (from item in db.GC_PagSeguroPagamento
                                                             where item.GC_MensalidadeId == value.Id
                                                             select item).FirstOrDefault();
 
-            return new Mailer().Boleto(oGC_Usuario.Email, oGC_Usuario.Nome, value.Vencimento.ToString("dd/MM/yyyy"), oGC_PagSeguroPagamento.BarCode, oGC_PagSeguroPagamento.Link);
+            return new Mailer().Boleto(oGC_Usuario.Email, oGC_Usuario.Nome, value.Vencimento.ToString("dd/MM/yyyy"), oGC_PagSeguroPagamento.BarCode, oGC_PagSeguroPagamento.Link, OGC_Academia.Nome, OGC_Academia);
 
         }
     }

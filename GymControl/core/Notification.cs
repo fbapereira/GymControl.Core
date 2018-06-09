@@ -17,8 +17,12 @@ namespace GymControl.core
             List<Notification_Response> lstNotification_Response = db.Database.SqlQuery<Notification_Response>("proc_select_boleto " + dias.ToString()).ToList();
             lstNotification_Response.ForEach((x) =>
             {
+
+                GC_Academia oGC_Academia = new GC_Academia();
+                oGC_Academia.Id = x.GC_AcademiaId;
+
                 DateTime oDt = Convert.ToDateTime(x.Vencimento);
-                new Mailer().PreVencimento(x.email, x.nome, oDt.ToString("dd/MM/yyyy"), x.barcode, x.Link, dias.ToString());
+                new Mailer().PreVencimento(x.email, x.nome, oDt.ToString("dd/MM/yyyy"), x.barcode, x.Link, dias.ToString(), oGC_Academia);
                 GC_Mensalidade oGC_Mensalidade = (from item in db.GC_Mensalidade
                                                   where item.Id == x.Id
                                                   select item).FirstOrDefault();
@@ -38,6 +42,8 @@ namespace GymControl.core
         public string email { get; set; }
         public string barcode { get; set; }
         public string Link { get; set; }
+        public Int32 GC_AcademiaId { get; set; }
+
         public DateTime? Vencimento { get; set; }
     }
 }

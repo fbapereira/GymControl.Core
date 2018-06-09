@@ -14,10 +14,12 @@ namespace GymControl.Models
         // automatically whenever you change your model schema, please use data migrations.
         // For more information refer to the documentation:
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
-    
+
         public GymControlContext() : base("name=GymControlContext")
         {
         }
+
+        public System.Data.Entity.DbSet<GymControl.Models.GC_Aula> GC_Aula { get; set; }
 
         public System.Data.Entity.DbSet<GymControl.Models.GC_Academia> GC_Academia { get; set; }
 
@@ -36,5 +38,7 @@ namespace GymControl.Models
         public System.Data.Entity.DbSet<GymControl.Models.GC_PagSeguroNotification> GC_PagSeguroNotification { get; set; }
 
         public System.Data.Entity.DbSet<GymControl.Models.GC_Email> GC_Email { get; set; }
+
+        public System.Data.Entity.DbSet<GymControl.Models.GC_Presenca> GC_Presenca { get; set; }
     }
 }

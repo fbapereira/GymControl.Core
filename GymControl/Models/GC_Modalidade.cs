@@ -13,5 +13,13 @@ namespace GymControl.Models
         [Required]
         public String Nome { get; set; }
 
+        [Required]
+        public Boolean IsActive { get; set; }
+
+        public ICollection<GC_Aula> Aulas { get; set; }
+
+        [Required]
+        public Int32 GC_AcademiaId { get; set; }
+
     }
 }

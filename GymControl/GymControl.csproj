@@ -71,8 +71,8 @@
     <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.0\lib\net451\Microsoft.Owin.Security.OAuth.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
@@ -207,16 +207,23 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AdicionaAulaController.cs" />
     <Compile Include="Controllers\AdicionaMensalidadeUsuarioController.cs" />
+    <Compile Include="Controllers\AdicionaModalidadeController.cs" />
+    <Compile Include="Controllers\AdicionaPresencaController.cs" />
     <Compile Include="Controllers\AdicionaUsuarioAcademiaController.cs" />
+    <Compile Include="Controllers\AlteraModalidadeController.cs" />
     <Compile Include="Controllers\AlteraStatusMensalidadeController.cs" />
     <Compile Include="Controllers\AlteraStatusPagamentoController.cs" />
     <Compile Include="Controllers\AlteraUsuarioController.cs" />
     <Compile Include="Controllers\CheckoutController.cs" />
     <Compile Include="Controllers\DeletaMensalidadeController.cs" />
     <Compile Include="Controllers\DeletaMensalidadePagseguroErroController.cs" />
+    <Compile Include="Controllers\DeletaModalidadeController.cs" />
+    <Compile Include="Controllers\DeletaPresencaController.cs" />
     <Compile Include="Controllers\DeletaUsuarioController.cs" />
     <Compile Include="Controllers\EnviaBoletoController.cs" />
+    <Compile Include="Controllers\EnviaBoletoSMSController.cs" />
     <Compile Include="Controllers\GC_AcademiaController.cs" />
     <Compile Include="Controllers\GC_MensalidadeController.cs" />
     <Compile Include="Controllers\GC_MensalidadeStatusController.cs" />
@@ -228,13 +235,18 @@
     <Compile Include="Controllers\GerarBoletosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MinhaInformacoesController.cs" />
     <Compile Include="Controllers\ObtemAcademiaUsuarioController.cs" />
+    <Compile Include="Controllers\ObtemEmailController.cs" />
     <Compile Include="Controllers\ObtemMensalidadeController.cs" />
+    <Compile Include="Controllers\ObtemModalidadeController.cs" />
     <Compile Include="Controllers\ObtemPagseguroController.cs" />
     <Compile Include="Controllers\ObtemPerfilController.cs" />
     <Compile Include="Controllers\ObtemRelatorioMensalController.cs" />
     <Compile Include="Controllers\ObtemSessaoController.cs" />
     <Compile Include="Controllers\ObtemUsuariosAcademiaController.cs" />
+    <Compile Include="Controllers\ObterBoletosMesController.cs" />
+    <Compile Include="Controllers\pagseguro_port2Controller.cs" />
     <Compile Include="Controllers\pagseguro_port1Controller.cs" />
     <Compile Include="Controllers\ResetarSenhaController.cs" />
     <Compile Include="core\Mailer.cs" />
@@ -310,8 +322,37 @@
     <Compile Include="Migrations\201804160021451_Email Log.Designer.cs">
       <DependentUpon>201804160021451_Email Log.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805251353300_Modulo de Aula.cs" />
+    <Compile Include="Migrations\201805251353300_Modulo de Aula.Designer.cs">
+      <DependentUpon>201805251353300_Modulo de Aula.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805251645089_Ajuste base.cs" />
+    <Compile Include="Migrations\201805251645089_Ajuste base.Designer.cs">
+      <DependentUpon>201805251645089_Ajuste base.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805251647400_Adicionar Presenca.cs" />
+    <Compile Include="Migrations\201805251647400_Adicionar Presenca.Designer.cs">
+      <DependentUpon>201805251647400_Adicionar Presenca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805251658343_Add Aula.cs" />
+    <Compile Include="Migrations\201805251658343_Add Aula.Designer.cs">
+      <DependentUpon>201805251658343_Add Aula.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806081141367_telefone.cs" />
+    <Compile Include="Migrations\201806081141367_telefone.Designer.cs">
+      <DependentUpon>201806081141367_telefone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806081752006_Id .cs" />
+    <Compile Include="Migrations\201806081752006_Id .Designer.cs">
+      <DependentUpon>201806081752006_Id .cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806092006234_Academia para emais.cs" />
+    <Compile Include="Migrations\201806092006234_Academia para emais.Designer.cs">
+      <DependentUpon>201806092006234_Academia para emais.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\GC_Academia.cs" />
+    <Compile Include="Models\GC_Aula.cs" />
     <Compile Include="Models\GC_Email.cs" />
     <Compile Include="Models\GC_Mensalidade.cs" />
     <Compile Include="Models\GC_MensalidadeStatus.cs" />
@@ -319,10 +360,12 @@
     <Compile Include="Models\GC_PagSeguroNotification.cs" />
     <Compile Include="Models\GC_PagSeguroPagamento.cs" />
     <Compile Include="Models\GC_Perfil.cs" />
+    <Compile Include="Models\GC_Presenca.cs" />
     <Compile Include="Models\GC_Usuario.cs" />
     <Compile Include="Models\GymControlContext.cs" />
     <Compile Include="pagseguro\GeradorBoleto.cs" />
     <Compile Include="pagseguro\Pagseguro.cs" />
+    <Compile Include="paposms\PapoSms.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SimpleAuthorizationServerProvider.cs" />
     <Compile Include="Startup.cs" />
@@ -450,6 +493,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804160021451_Email Log.resx">
       <DependentUpon>201804160021451_Email Log.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805251353300_Modulo de Aula.resx">
+      <DependentUpon>201805251353300_Modulo de Aula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805251645089_Ajuste base.resx">
+      <DependentUpon>201805251645089_Ajuste base.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805251647400_Adicionar Presenca.resx">
+      <DependentUpon>201805251647400_Adicionar Presenca.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805251658343_Add Aula.resx">
+      <DependentUpon>201805251658343_Add Aula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806081141367_telefone.resx">
+      <DependentUpon>201806081141367_telefone.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806081752006_Id .resx">
+      <DependentUpon>201806081752006_Id .cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806092006234_Academia para emais.resx">
+      <DependentUpon>201806092006234_Academia para emais.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

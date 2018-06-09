@@ -10,7 +10,7 @@ namespace GymControl.core
     public class Mailer
     {
         private static GymControlContext db = new GymControlContext();
-        private void Log(MailMessage oMailMessage)
+        private void Log(MailMessage oMailMessage, GC_Academia oGC_Academia)
         {
             GC_Email oGC_Email = new GC_Email();
 
@@ -18,6 +18,7 @@ namespace GymControl.core
             oGC_Email.Data = DateTime.Now;
             oGC_Email.Email = oMailMessage.To[0].Address;
             oGC_Email.Titulo = oMailMessage.Subject;
+            oGC_Email.GC_AcademiaId = oGC_Academia;
 
 
             db.GC_Email.Add(oGC_Email);
@@ -26,7 +27,7 @@ namespace GymControl.core
         }
 
 
-        public bool RecuperaSenha(string email, string senha)
+        public bool RecuperaSenha(string email, string senha, GC_Academia oGC_Academia)
         {
             String body = "<html><head><style>html{line-height:1.5;font-family:\"Roboto\",sans-serif;font-weight:normal;color:rgba(0, 0, 0, 0.87)}</style></head><body style=\"margin: 0px\"><div style=\"height: 50px; background: black\"><center> <img style=\"height: 40px; margin - top:5px\" src=\"http://app.basicflux.com/img/logo_header.png\"/></center </div><div style=\"height:50px; margin-left:20%; width:60%;\"><h1 style=\"color:purple\">Nova Senha</h1><p> Você solicitiou uma nova senha no TheFlux! Sua nova senha é:</p><div style=\"height:50px; background:purple; color:white\"><center style=\"vertical-align: middle;line-height: 50px;\">{0}</center></div><p> Você pode trocar sua senha a qualquer momento, selecionando o menu \"Usuário\", então clicando na chave ao lado do seu nome.</p><p> Atenciosamente,</p><p> Equipe BasicFlux</p></div></body></html>";
 
@@ -42,12 +43,12 @@ namespace GymControl.core
 
             SmtpClient client = new SmtpClient();
             client.Send(message);
-            this.Log(message);
+            this.Log(message, oGC_Academia);
             return true;
 
         }
 
-        public bool ContaAReceber(string email, string conta, String valor)
+        public bool ContaAReceber(string email, string conta, String valor, GC_Academia oGC_Academia)
         {
             String body = "<html><head><style>html{line-height:1.5;font-family:\"Roboto\",sans-serif;font-weight:normal;color:rgba(0, 0, 0, 0.87)}</style></head><body style=\"margin: 0px\"><div style=\"height: 50px; background: black\"><center> <img style=\"height: 40px; margin - top:5px\" src=\"http://app.basicflux.com/img/logo_header.png\" /></center</div><div style=\"height:50px; margin-left:20%; width:60%;\"><h1 style=\"color:purple\">Conta Atrasada</h1><p> Você registrou um pagamento ({0}) no TheFlux! E ele vence hoje:</p><div style=\"height:50px; background:purple; color:white\"><center style=\"vertical-align: middle;line-height: 50px;\">{1}</center></div><p> Não se esqueça de marcar a conta como paga.</p><p> Atenciosamente,</p><p> Equipe BasicFlux</p></div></body></html>";
             MailMessage message = new MailMessage();
@@ -63,12 +64,12 @@ namespace GymControl.core
 
             SmtpClient client = new SmtpClient();
             client.Send(message);
-            this.Log(message);
+            this.Log(message, oGC_Academia);
             return true;
 
         }
 
-        public bool ContaAPagar(string email, string conta, String valor)
+        public bool ContaAPagar(string email, string conta, String valor, GC_Academia oGC_Academia)
         {
             String body = "<html><head><style>html{line-height:1.5;font-family:\"Roboto\",sans-serif;font-weight:normal;color:rgba(0, 0, 0, 0.87)}</style></head><body style=\"margin: 0px\"><div style=\"height: 50px; background: black\"><center> <img style=\"height: 40px; margin - top:5px\" src=\"http://app.basicflux.com/img/logo_header.png\" /></center</div><div style=\"height:50px; margin-left:20%; width:60%;\"><h1 style=\"color:purple\">Conta Atrasada</h1><p> Você registrou uma conta ({0}) no TheFlux! E ela vence hoje:</p><div style=\"height:50px; background:purple; color:white\"><center style=\"vertical-align: middle;line-height: 50px;\">{1}</center></div><p> Não se esqueça de marcar a conta como paga.</p><p> Atenciosamente,</p><p> Equipe BasicFlux</p></div></body></html>";
 
@@ -85,12 +86,12 @@ namespace GymControl.core
 
             SmtpClient client = new SmtpClient();
             client.Send(message);
-            this.Log(message);
+            this.Log(message, oGC_Academia);
             return true;
 
         }
 
-        public bool Comprovante(string email, string conta, String valor, String data)
+        public bool Comprovante(string email, string conta, String valor, String data, GC_Academia oGC_Academia)
         {
             String body = "<html><head><style>html{line-height:1.5;font-family:\"Roboto\",sans-serif;font-weight:normal;color:rgba(0, 0, 0, 0.87)}</style></head><body style=\"margin: 0px\"><div style=\"height: 50px; background: black\"><center> <img style=\"height: 40px; margin - top:5px\" src=\"http://app.basicflux.com/img/logo_header.png\" /></center</div><div style=\"height:50px; margin-left:20%; width:60%;\"><h1 style=\"color:purple\">Conta Paga</h1><p> Você pagou a conta ({0}) registrada para o dia {{2}} no TheFlux! O valor pago foi de:</p><div style=\"height:50px; background:purple; color:white\"><center style=\"vertical-align: middle;line-height: 50px;\">{{1}}</center></div><p> Não se esqueça de marcar a conta como paga.</p><p> Atenciosamente,</p><p> Equipe BasicFlux</p></div></body></html>";
 
@@ -108,14 +109,14 @@ namespace GymControl.core
 
             SmtpClient client = new SmtpClient();
             client.Send(message);
-            this.Log(message);
+            this.Log(message, oGC_Academia);
             return true;
 
         }
 
-        public bool Boleto(string email, string nome, string vencimento, string boleto, string url)
+        public bool Boleto(string email, string nome, string vencimento, string boleto, string url, string academia, GC_Academia oGC_Academia)
         {
-            String body = "<html><head> <style>html{line-height: 1.5; font-family: \"Roboto\",sans-serif;font-weight:normal;color:rgba(0, 0, 0, 0.87)}</style></head><body style=\"margin: 0px\"> <div style=\"height: 50px; background: black\"> <div style=\"height: 50px; margin - left:20 %; width: 60 %; \"><br/><br/> <h1 style=\"color: purple\">Seu Boleto</h1> <p> Olá,{0}este é o seu boleto com vencimento para{1},você pode imprimir clicando <a href=\"{3}\">aqui</a>:</p><div style=\"height: 50px; background: purple; color: white\"> <center style=\"vertical - align: middle; line - height: 50px; \">{2}</center> </div><p> Atenciosamente,</p><p> Equipe BasicFlux</p></div></body></html>";
+            String body = "<html><head> <style>html{line-height: 1.5; font-family: \"Roboto\",sans-serif;font-weight:normal;color:rgba(0, 0, 0, 0.87)}</style></head><body style=\"margin: 0px\"> <div style=\"height: 50px; background: black\"> <div style=\"height: 50px; margin - left:20 %; width: 60 %; \"><br/><br/> <h1 style=\"color: purple\">Seu Boleto</h1> <p> Olá, {0} este é o seu boleto com vencimento para {1} referente a academia {4},você pode imprimir clicando <a href=\"{3}\">aqui</a>:</p><div style=\"height: 50px; background: purple; color: white\"> <center style=\"vertical - align: middle; line - height: 50px; \">{2}</center> </div><p> Atenciosamente,</p><p> Equipe BasicFlux</p></div></body></html>";
 
             MailMessage message = new MailMessage();
             message.From = new MailAddress("contato@basicflux.com");
@@ -127,16 +128,17 @@ namespace GymControl.core
             body = body.Replace("{1}", vencimento);
             body = body.Replace("{2}", boleto);
             body = body.Replace("{3}", url);
+            body = body.Replace("{4}", academia);
             message.Body = body;
             message.IsBodyHtml = true;
 
             SmtpClient client = new SmtpClient();
             client.Send(message);
-            this.Log(message);
+            this.Log(message, oGC_Academia);
             return true;
         }
 
-        public bool PreVencimento(string email, string nome, string vencimento, string boleto, string url, string dias)
+        public bool PreVencimento(string email, string nome, string vencimento, string boleto, string url, string dias, GC_Academia oGC_Academia)
         {
 
             String body = "<html><head><style>html{line-height: 1.5;font-family: \"Roboto\",sans-serif;font-weight:normal;color:rgba(0, 0, 0, 0.87)}</style></head><body style=\"margin: 0px\"><div style=\"height: 50px; backsground: black\"><div style=\"height:50px; margin-left:20%; width:60%;\"><br/><br/><h1 style=\"color:purple\">Seu Boleto</h1><p> Olá, {0} este é o seu boleto com que vence em {3} dia(s) ({1}),você pode imprimir clicando <a href=\"{4}\">aqui</a>:</p><div style=\"height:50px; background:purple; color:white\"><center style=\"vertical-align: middle;line-height: 50px;\">{2}</center></div><p> Atenciosamente,</p><p> Equipe BasicFlux</p></div></body></html>";
@@ -157,7 +159,7 @@ namespace GymControl.core
 
             SmtpClient client = new SmtpClient();
             client.Send(message);
-            this.Log(message);
+            this.Log(message, oGC_Academia);
             return true;
         }
 
