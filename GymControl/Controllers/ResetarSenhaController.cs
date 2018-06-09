@@ -31,7 +31,8 @@ namespace GymControl.Controllers
             oUsu.Senha = GerarSenha();
             db.SaveChanges();
 
-            GC_Academia oGC_Academia = oUsu.Academias.FirstOrDefault();
+            GC_Academia oGC_Academia = new GC_Academia();
+            oGC_Academia.Id = 1;
 
 
             new Mailer().RecuperaSenha(oUsu.Email, oUsu.Senha, oGC_Academia);

@@ -350,6 +350,10 @@
     <Compile Include="Migrations\201806092006234_Academia para emais.Designer.cs">
       <DependentUpon>201806092006234_Academia para emais.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806092200464_Academia para Aulas.cs" />
+    <Compile Include="Migrations\201806092200464_Academia para Aulas.Designer.cs">
+      <DependentUpon>201806092200464_Academia para Aulas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\GC_Academia.cs" />
     <Compile Include="Models\GC_Aula.cs" />
@@ -514,6 +518,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806092006234_Academia para emais.resx">
       <DependentUpon>201806092006234_Academia para emais.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806092200464_Academia para Aulas.resx">
+      <DependentUpon>201806092200464_Academia para Aulas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
