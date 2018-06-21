@@ -9,6 +9,7 @@ using System.Web.Http;
 
 namespace GymControl.Controllers
 {
+    [Authorize]
     public class ObtemSessaoController : ApiController
     {
         [HttpPost]

@@ -11,6 +11,7 @@ namespace GymControl.Controllers
     public class ObtemPagseguroController : ApiController
     {
         private GymControlContext db = new GymControlContext();
+
         [HttpPost]
         public GC_PagSeguroPagamento Post([FromBody]GC_Mensalidade value)
         {

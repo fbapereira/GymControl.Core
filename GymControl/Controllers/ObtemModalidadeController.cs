@@ -11,7 +11,7 @@ namespace GymControl.Controllers
     public class ObtemModalidadeController : ApiController
     {
         private GymControlContext db = new GymControlContext();
-
+        [Authorize]
         [HttpPost]
         public List<GC_Modalidade> Post([FromBody]GC_Academia value)
         {

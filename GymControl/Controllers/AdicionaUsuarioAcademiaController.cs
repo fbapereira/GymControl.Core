@@ -14,6 +14,7 @@ namespace GymControl.Controllers
         private GymControlContext db = new GymControlContext();
 
         [HttpPost]
+        [Authorize]
         public Boolean Post([FromBody]dynamic value)
         {
             Int32 GC_AcademiaId = value.GC_AcademiaId;

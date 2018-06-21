@@ -14,6 +14,7 @@ namespace GymControl.Controllers
         private GymControlContext db = new GymControlContext();
 
         [HttpPost]
+        [Authorize]
         public GC_PagSeguroPagamento Post([FromBody]dynamic value)
         {
             Int32 idMensalidade = Convert.ToInt32(value.Id);

@@ -17,19 +17,29 @@ namespace GymControl.core
             List<Notification_Response> lstNotification_Response = db.Database.SqlQuery<Notification_Response>("proc_select_boleto " + dias.ToString()).ToList();
             lstNotification_Response.ForEach((x) =>
             {
+                try
+                {
+                    GC_Academia oGC_Academia = new GC_Academia();
+                    oGC_Academia.Id = x.GC_AcademiaId;
 
-                GC_Academia oGC_Academia = new GC_Academia();
-                oGC_Academia.Id = x.GC_AcademiaId;
+                    DateTime oDt = Convert.ToDateTime(x.Vencimento);
+                    new Mailer().PreVencimento(x.email, x.nome, oDt.ToString("dd/MM/yyyy"), x.barcode, x.Link, dias.ToString(), oGC_Academia);
 
-                DateTime oDt = Convert.ToDateTime(x.Vencimento);
-                new Mailer().PreVencimento(x.email, x.nome, oDt.ToString("dd/MM/yyyy"), x.barcode, x.Link, dias.ToString(), oGC_Academia);
-                GC_Mensalidade oGC_Mensalidade = (from item in db.GC_Mensalidade
-                                                  where item.Id == x.Id
-                                                  select item).FirstOrDefault();
 
-                if (dias == 5) oGC_Mensalidade.IsAvisoCinco = true;
-                if (dias == 3) oGC_Mensalidade.IsAvisoTres = true;
-                if (dias == 1) oGC_Mensalidade.IsAvisoUm = true;
+
+                }
+                catch
+                {
+                }
+                finally
+                {
+                    GC_Mensalidade oGC_Mensalidade = (from item in db.GC_Mensalidade
+                                                      where item.Id == x.Id
+                                                      select item).FirstOrDefault();
+                    if (dias == 5) oGC_Mensalidade.IsAvisoCinco = true;
+                    if (dias == 3) oGC_Mensalidade.IsAvisoTres = true;
+                    if (dias == 1) oGC_Mensalidade.IsAvisoUm = true;
+                }
             });
             db.SaveChanges();
         }

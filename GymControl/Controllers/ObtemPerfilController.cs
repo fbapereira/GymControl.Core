@@ -13,6 +13,7 @@ namespace GymControl.Controllers
         private GymControlContext db = new GymControlContext();
 
         [HttpPost]
+        [Authorize]
         public List<GC_Perfil> Post([FromBody]dynamic value)
         {
             Int32 UsuarioId = value.UsuarioId;

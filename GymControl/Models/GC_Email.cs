@@ -26,5 +26,8 @@ namespace GymControl.Models
         [Required]
         public GC_Academia GC_AcademiaId { get; set; }
 
+        [Required]
+        public String Erro { get; set; }
+
     }
 }

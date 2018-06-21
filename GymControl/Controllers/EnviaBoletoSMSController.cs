@@ -14,7 +14,7 @@ namespace GymControl.Controllers
         private GymControlContext db = new GymControlContext();
 
         [HttpPost]
-        public bool Post([FromBody]GC_Mensalidade value)
+         public bool Post([FromBody]GC_Mensalidade value)
         {
             value = (from item in db.GC_Mensalidade
                      where item.Id == value.Id
@@ -39,7 +39,7 @@ namespace GymControl.Controllers
 
             message = message.Replace("{0}", oGC_Usuario.Nome);
             message = message.Replace("{1}", value.Vencimento.ToString("dd/MM/yyyy"));
-            message = message.Replace("{2}", "<<URL VAI AQUI>>");
+            message = message.Replace("{2}", "http://basicflux.com/#/eu");
             message = message.Replace("{3}", OGC_Academia.Nome);
 
             new PapoSms().EnviarMensalidade(oGC_Usuario.Telefone, message);

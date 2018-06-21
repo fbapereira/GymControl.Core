@@ -11,7 +11,7 @@ namespace GymControl.Controllers
     public class ObtemEmailController : ApiController
     {
         private GymControlContext db = new GymControlContext();
-
+        [Authorize]
         [HttpPost]
         public List<GC_Email> Post([FromBody]GC_Academia oGC_Academia)
         {

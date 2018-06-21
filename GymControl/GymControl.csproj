@@ -354,6 +354,10 @@
     <Compile Include="Migrations\201806092200464_Academia para Aulas.Designer.cs">
       <DependentUpon>201806092200464_Academia para Aulas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806151409096_Email Error.cs" />
+    <Compile Include="Migrations\201806151409096_Email Error.Designer.cs">
+      <DependentUpon>201806151409096_Email Error.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\GC_Academia.cs" />
     <Compile Include="Models\GC_Aula.cs" />
@@ -521,6 +525,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806092200464_Academia para Aulas.resx">
       <DependentUpon>201806092200464_Academia para Aulas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806151409096_Email Error.resx">
+      <DependentUpon>201806151409096_Email Error.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

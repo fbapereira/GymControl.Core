@@ -14,6 +14,7 @@ namespace GymControl.Controllers
         private GymControlContext db = new GymControlContext();
 
         [HttpPost]
+        [Authorize]
         public Boolean Post([FromBody]GC_Presenca gC_Presenca)
         {
             GC_Presenca oGC_Presenca = (from item in db.GC_Presenca

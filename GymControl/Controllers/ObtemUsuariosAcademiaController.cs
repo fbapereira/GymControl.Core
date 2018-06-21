@@ -8,6 +8,7 @@ using System.Web.Http;
 
 namespace GymControl.Controllers
 {
+    [Authorize]
     public class ObtemUsuariosAcademiaController : ApiController
     {
         private GymControlContext db = new GymControlContext();

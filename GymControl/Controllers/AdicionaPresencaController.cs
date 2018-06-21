@@ -13,6 +13,7 @@ namespace GymControl.Controllers
         private GymControlContext db = new GymControlContext();
 
         [HttpPost]
+        [Authorize]
         public Boolean Post([FromBody]GC_Presenca value)
         {
             this.db.GC_Presenca.Add(value);

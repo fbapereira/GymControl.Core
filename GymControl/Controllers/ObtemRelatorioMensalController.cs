@@ -11,7 +11,7 @@ using System.Web.Http;
 
 namespace GymControl.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class ObtemRelatorioMensalController : ApiController
     {
 

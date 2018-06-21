@@ -13,6 +13,7 @@ namespace GymControl.Controllers
     {
         private GymControlContext db = new GymControlContext();
 
+        [Authorize]
         [HttpPost]
         public Boolean Post([FromBody]List<GC_Mensalidade> value)
         {

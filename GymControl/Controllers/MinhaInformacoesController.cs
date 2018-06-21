@@ -11,7 +11,6 @@ namespace GymControl.Controllers
     public class MinhaInformacoesController : ApiController
     {
         private GymControlContext db = new GymControlContext();
-
         [HttpPost]
         public GC_Usuario Post([FromBody]GC_Usuario value)
         {
