@@ -48,6 +48,8 @@ namespace GymControl
                                       select item).FirstOrDefault();
             var oAuthIdentity = new ClaimsIdentity(context.Options.AuthenticationType);
             oAuthIdentity.AddClaim(new Claim(ClaimTypes.Name, oGC_Usuario.Nome));
+            oAuthIdentity.AddClaim(new Claim(ClaimTypes.Sid, oGC_Usuario.Id.ToString()));
+
             var ticket = new AuthenticationTicket(oAuthIdentity, new AuthenticationProperties());
             context.Validated(ticket);
             return base.GrantClientCredentials(context);

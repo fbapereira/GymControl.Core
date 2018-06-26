@@ -40,5 +40,7 @@ namespace GymControl.Models
         public System.Data.Entity.DbSet<GymControl.Models.GC_Email> GC_Email { get; set; }
 
         public System.Data.Entity.DbSet<GymControl.Models.GC_Presenca> GC_Presenca { get; set; }
+
+        public System.Data.Entity.DbSet<GymControl.Models.GC_MensalidadeLog> GC_MensalidadeLog { get; set; }
     }
 }

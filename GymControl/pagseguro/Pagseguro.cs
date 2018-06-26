@@ -1,9 +1,11 @@
-﻿using GymControl.Models;
+﻿using GymControl.core;
+using GymControl.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Security.Claims;
 using System.Text;
 using System.Web;
 using System.Xml;
@@ -253,6 +255,8 @@ namespace GymControl.pagseguro
                         oGC_Mensalidade.GC_MensalidadeStatusId = Convert.ToInt32(status);
 
                         db.SaveChanges();
+                        new MensalidadeLogger().Log(oGC_Mensalidade, null, "Pagseguro");
+
                         return true;
                     }
                     catch (Exception)

@@ -1,10 +1,12 @@
-﻿using GymControl.Models;
+﻿using GymControl.core;
+using GymControl.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Web.Http;
 
 namespace GymControl.Controllers
@@ -36,7 +38,11 @@ namespace GymControl.Controllers
 
             oGC_Usuario.Mensalidades = new Collection<GC_Mensalidade>();
             oGC_Usuario.Mensalidades.Add(oGC_Mensalidade);
+
+
             db.SaveChangesAsync();
+            new MensalidadeLogger().Log(oGC_Mensalidade, (ClaimsIdentity)User.Identity, "Criada pelo usuario");
+
             return true;
 
         }

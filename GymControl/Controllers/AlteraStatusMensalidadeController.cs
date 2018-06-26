@@ -1,9 +1,11 @@
-﻿using GymControl.Models;
+﻿using GymControl.core;
+using GymControl.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Web.Http;
 
 namespace GymControl.Controllers
@@ -33,6 +35,8 @@ namespace GymControl.Controllers
 
             oGC_Mensalidade.GC_MensalidadeStatusId = oGC_MensalidadeStatus.Id;
             db.SaveChangesAsync();
+            new MensalidadeLogger().Log(oGC_Mensalidade, (ClaimsIdentity)User.Identity, "Alterada pelo usuario");
+
             return true;
 
         }

@@ -239,6 +239,7 @@
     <Compile Include="Controllers\ObtemAcademiaUsuarioController.cs" />
     <Compile Include="Controllers\ObtemEmailController.cs" />
     <Compile Include="Controllers\ObtemMensalidadeController.cs" />
+    <Compile Include="Controllers\ObtemMensalidadeDetalheController.cs" />
     <Compile Include="Controllers\ObtemModalidadeController.cs" />
     <Compile Include="Controllers\ObtemPagseguroController.cs" />
     <Compile Include="Controllers\ObtemPerfilController.cs" />
@@ -249,6 +250,7 @@
     <Compile Include="Controllers\pagseguro_port2Controller.cs" />
     <Compile Include="Controllers\pagseguro_port1Controller.cs" />
     <Compile Include="Controllers\ResetarSenhaController.cs" />
+    <Compile Include="core\MensalidadeLogger.cs" />
     <Compile Include="core\Mailer.cs" />
     <Compile Include="core\Notification.cs" />
     <Compile Include="Global.asax.cs">
@@ -358,11 +360,24 @@
     <Compile Include="Migrations\201806151409096_Email Error.Designer.cs">
       <DependentUpon>201806151409096_Email Error.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806211250275_mensalidadelog.cs" />
+    <Compile Include="Migrations\201806211250275_mensalidadelog.Designer.cs">
+      <DependentUpon>201806211250275_mensalidadelog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806211627112_log mensalidade.cs" />
+    <Compile Include="Migrations\201806211627112_log mensalidade.Designer.cs">
+      <DependentUpon>201806211627112_log mensalidade.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806211654028_Id de mensalidade.cs" />
+    <Compile Include="Migrations\201806211654028_Id de mensalidade.Designer.cs">
+      <DependentUpon>201806211654028_Id de mensalidade.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\GC_Academia.cs" />
     <Compile Include="Models\GC_Aula.cs" />
     <Compile Include="Models\GC_Email.cs" />
     <Compile Include="Models\GC_Mensalidade.cs" />
+    <Compile Include="Models\GC_MensalidadeLog.cs" />
     <Compile Include="Models\GC_MensalidadeStatus.cs" />
     <Compile Include="Models\GC_Modalidade.cs" />
     <Compile Include="Models\GC_PagSeguroNotification.cs" />
@@ -528,6 +543,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201806151409096_Email Error.resx">
       <DependentUpon>201806151409096_Email Error.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806211250275_mensalidadelog.resx">
+      <DependentUpon>201806211250275_mensalidadelog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806211627112_log mensalidade.resx">
+      <DependentUpon>201806211627112_log mensalidade.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806211654028_Id de mensalidade.resx">
+      <DependentUpon>201806211654028_Id de mensalidade.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

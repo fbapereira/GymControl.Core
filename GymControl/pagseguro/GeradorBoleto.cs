@@ -1,4 +1,6 @@
-﻿using GymControl.Models;
+﻿using GymControl.core;
+using GymControl.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -110,6 +112,12 @@ namespace GymControl.pagseguro
                     });
                     lstGC_PagSeguroPagamento = lstGC_PagSeguroPagamento.OrderBy(x => x.DueDate).ToList();
                     return lstGC_PagSeguroPagamento;
+                }
+                else
+                {
+                    var responseContent = response.Content;
+                    string responseString = responseContent.ReadAsStringAsync().Result;
+                    throw new Exception(responseString);
                 }
             }
 

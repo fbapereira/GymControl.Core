@@ -6,9 +6,11 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
+using GymControl.core;
 using GymControl.Models;
 using GymControl.pagseguro;
 
@@ -75,6 +77,7 @@ namespace GymControl.Controllers
         }
 
         // POST: api/GC_Mensalidade
+        [Authorize]
         [ResponseType(typeof(GC_Mensalidade))]
         public async Task<IHttpActionResult> PostGC_Mensalidade(GC_Mensalidade gC_Mensalidade)
         {
@@ -82,8 +85,10 @@ namespace GymControl.Controllers
 
             gC_Mensalidade.GC_MensalidadeStatusId = 1;
             gC_Mensalidade.IsActive = true;
-            await db.SaveChangesAsync();
-            // new GeradorBoleto().GerarBoletos(gC_Mensalidade);
+            db.SaveChanges();
+
+            new MensalidadeLogger().Log(gC_Mensalidade, (ClaimsIdentity)User.Identity, "Criada pelo usuario");
+
             return Ok(gC_Mensalidade);
         }
 

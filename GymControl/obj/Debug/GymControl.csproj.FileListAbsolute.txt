@@ -386,3 +386,6 @@ C:\projeto\pessoal\GymControl.Core\GymControl\obj\Debug\GymControl.csproj.CopyCo
 C:\projeto\pessoal\GymControl.Core\GymControl\obj\Debug\GymControl.dll
 C:\projeto\pessoal\GymControl.Core\GymControl\obj\Debug\GymControl.pdb
 C:\projeto\pessoal\GymControl.Core\GymControl\obj\Debug\GymControl.Migrations.EmailError.resources
+C:\projeto\pessoal\GymControl.Core\GymControl\obj\Debug\GymControl.Migrations.mensalidadelog.resources
+C:\projeto\pessoal\GymControl.Core\GymControl\obj\Debug\GymControl.Migrations.logmensalidade.resources
+C:\projeto\pessoal\GymControl.Core\GymControl\obj\Debug\GymControl.Migrations.Iddemensalidade.resources
